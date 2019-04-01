@@ -1,0 +1,19 @@
+#timer {
+  letter-spacing: 1px;
+}
+
+#timer .tens {
+  opacity: 0.6;
+}
+
+#timer .ones {
+  opacity: 0.4;
+}
+
+#timer.urgent span {
+  opacity: 1;
+}
+
+#timer.overtime {
+  color: red;
+}
