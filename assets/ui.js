@@ -91,7 +91,8 @@ function startTimer() {
 window.addEventListener('DOMContentLoaded', (event) => {
   var timerElem = document.getElementById("timer");
   var button = document.createElement("button");
-  button.textContent = "start"
+  button.textContent = "start";
+  button.type = "button";
 
   button.onclick = () => {
     button.remove();
