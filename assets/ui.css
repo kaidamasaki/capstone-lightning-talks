@@ -3,20 +3,19 @@
   position: fixed;
   top: 10px;
   right: 10px;
-  background: #fff;
+  color: #fff;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   padding-top: 5px;
-  width: 60px;
-  height: 25px;
   font-size: 20px;
 }
 
 #timer button {
   margin-top: -5px;
+  padding: 5px 5px 3px;
   font-family: Helvetica, sans-serif;
   letter-spacing: normal;
 }
@@ -34,5 +33,5 @@
 }
 
 #timer.overtime {
-  color: #990000;
+  color: #f00;
 }

@@ -14,15 +14,15 @@ Timer.prototype.start = function() {
   this.elems.minutes = document.createTextNode(this.minutes);
 
   this.elems.tens = document.createTextNode(this.tens);
-  var tensWrapper = document.createElement("span");
+  let tensWrapper = document.createElement("span");
   tensWrapper.classList.add("tens");
   tensWrapper.appendChild(this.elems.tens);
 
   this.elems.ones = document.createTextNode(this.ones);
-  var onesWrapper = document.createElement("span");
+  let onesWrapper = document.createElement("span");
   onesWrapper.classList.add("ones");
   onesWrapper.appendChild(this.elems.ones);
-  var colon = document.createTextNode(":");
+  let colon = document.createTextNode(":");
 
   this.target.appendChild(this.elems.minutes);
   this.target.appendChild(colon);
@@ -30,6 +30,8 @@ Timer.prototype.start = function() {
   this.target.appendChild(onesWrapper);
 
   window.setInterval(this.tick.bind(this), 1000);
+
+  this.display();
 }
 
 Timer.prototype.display = function() {
@@ -83,49 +85,79 @@ Timer.prototype.tick = function() {
   this.display();
 }
 
-function startTimer() {
-  var timer = new Timer(document.getElementById("timer"))
-  timer.start()
-  timer.display();
-}
+function SlideShow(target) {
+  this.target = target;
+  this.all = Array.from(this.target.children);
 
-function nextSlide(slides) {
-  var current = slides.findIndex(
+  let current = this.all.findIndex(
     slide =>
       "#" + slide.id == window.location.hash);
-  if (current < 0) {
-    current = 0;
-  }
-  
-  let next = slides[(current + 1) % slides.length]
 
-  window.location.href = "#" + next.id;
-  
-  window.setTimeout(() => next.scrollIntoView(true), 10);
+  if (current < 0) {
+    this.current = 0;
+  } else {
+    this.current = current;
+  }
+}
+
+SlideShow.prototype.show = function(index) {
+  let len = this.all.length;
+  // Workaround for negative % results.
+  let modIndex = ((index % len) + len) % len
+
+  window.location.href = "#" + this.all[modIndex].id;
+}
+
+SlideShow.prototype.prev = function() {
+  this.current -= 1;
+
+  this.show(this.current);
+}
+
+SlideShow.prototype.next = function() {
+  this.current += 1;
+
+  this.show(this.current);
 }
 
 // Only add the button if JS is on.
 window.addEventListener('DOMContentLoaded', (event) => {
-  var timerElem = document.getElementById("timer");
-  var button = document.createElement("button");
+  let timerElem = document.getElementById("timer");
+  let timer = new Timer(document.getElementById("timer"))
+
+  let button = document.createElement("button");
   button.textContent = "start";
   button.type = "button";
 
   timerElem.appendChild(button);
 
-  let slides = Array.from(document.getElementById("slideshow").children);
+  let slideShow = new SlideShow(document.getElementById("slideshow"))
 
   button.addEventListener("click", () => {
     button.remove();
-    startTimer();
+    timer.start();
     document.documentElement.requestFullscreen();
-    window.location = "#" + slides[0].id;
   });
 
-  document.addEventListener("keypress", (event) => {
-    if (event.key == " ") {
+  document.addEventListener("keydown", (event) => {
+    console.log(event);
+
+    if (
+      (event.code == "Space" && event.shiftKey)
+        || event.code == "ArrowUp"
+        || event.code == "ArrowLeft") {
       event.stopPropagation();
-      nextSlide(slides);
+      event.preventDefault();
+
+      slideShow.prev()
+    } else if (
+      (event.code == "Space" && !event.shiftKey
+       || event.code == "ArrowDown"
+       || event.code == "ArrowRight")) {
+      event.stopPropagation();
+      event.preventDefault();
+
+      slideShow.next()
     }
   });
 });
