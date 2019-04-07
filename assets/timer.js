@@ -8,8 +8,6 @@ function Timer(target) {
 }
 
 Timer.prototype.start = function() {
-  Array.from(this.target.getElementsByTagName("input")).map(e => e.remove());
-
   this.elems = {};
   this.elems.minutes = document.createTextNode(this.minutes);
 
@@ -88,3 +86,18 @@ function startTimer() {
   timer.start()
   timer.display();
 }
+
+// Only add the button if JS is on.
+window.addEventListener('DOMContentLoaded', (event) => {
+  var timerElem = document.getElementById("timer");
+  var button = document.createElement("button");
+  button.textContent = "start"
+
+  button.onclick = () => {
+    button.remove();
+    startTimer();
+    document.documentElement.requestFullscreen();
+  };
+
+  timerElem.appendChild(button);
+});
