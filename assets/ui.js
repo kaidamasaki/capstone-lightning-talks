@@ -1,3 +1,5 @@
+"use strict";
+
 function Timer(target) {
   this.minutes = 5;
   this.tens = 0;
@@ -40,7 +42,7 @@ Timer.prototype.tick = function() {
   if (this.minutes == 0 && this.tens == 3 && this.ones == 0) {
     this.target.classList.add("urgent");
   }
-  
+
   if (this.minutes == 0 && this.tens == 0 && this.ones == 0) {
     this.timeLeft = false;
     this.minutes = 0;
@@ -87,6 +89,21 @@ function startTimer() {
   timer.display();
 }
 
+function nextSlide(slides) {
+  var current = slides.findIndex(
+    slide =>
+      "#" + slide.id == window.location.hash);
+  if (current < 0) {
+    current = 0;
+  }
+  
+  let next = slides[(current + 1) % slides.length]
+
+  window.location.href = "#" + next.id;
+  
+  window.setTimeout(() => next.scrollIntoView(true), 10);
+}
+
 // Only add the button if JS is on.
 window.addEventListener('DOMContentLoaded', (event) => {
   var timerElem = document.getElementById("timer");
@@ -94,11 +111,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
   button.textContent = "start";
   button.type = "button";
 
-  button.onclick = () => {
+  timerElem.appendChild(button);
+
+  let slides = Array.from(document.getElementById("slideshow").children);
+
+  button.addEventListener("click", () => {
     button.remove();
     startTimer();
     document.documentElement.requestFullscreen();
-  };
+    window.location = "#" + slides[0].id;
+  });
 
-  timerElem.appendChild(button);
+  document.addEventListener("keypress", (event) => {
+    if (event.key == " ") {
+      event.stopPropagation();
+      nextSlide(slides);
+    }
+  });
 });
