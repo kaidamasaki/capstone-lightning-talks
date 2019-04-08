@@ -136,14 +136,13 @@ a:hover {
                     url(images/black.svg),
                     url(images/red.svg),
                     url(images/green.svg);
-  background-size: 150px;
+  background-size: 20vmin;
   background-repeat: no-repeat;
-  /* TODO: Rewrite using vmin */
-  background-position: 50% 10%,
-                       70% 42%,
-                       61.5% 85%,
-                       39.5% 85%,
-                       30% 42%;
+  background-position: 50% calc(50% - 32vmin),
+                       calc(50% + 32vmin) calc(50% - 7vmin),
+                       calc(50% + 18vmin) calc(50% + 28vmin),
+                       calc(50% - 18vmin) calc(50% + 28vmin),
+                       calc(50% - 32vmin) calc(50% - 7vmin);
 }
 
 /* Font colors for the Colors */
