@@ -68,7 +68,7 @@ a:hover {
 }
 
 #slideshow > section {
-  min-height: calc(100vh - 40px);
+  min-height: calc(100vh - 60px);
   padding: 40px 15px 20px 30px;
 }
 
@@ -199,7 +199,7 @@ a:hover {
   margin-top: 1em;
 }
 
-@media (max-width: 1000px) {
+@media (width < 1024px) {
   #slideshow .traits, #slideshow .pov {
     display: flex;
     flex-direction: column;

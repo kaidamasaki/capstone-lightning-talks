@@ -14,6 +14,13 @@
   font-size: 20px;
 }
 
+/* We don't want the timer on mobile. */
+@media (width < 1024px) {
+  #timer {
+    display: none;
+  }
+}
+
 #timer button {
   margin-top: -5px;
   padding: 5px 5px 3px;
