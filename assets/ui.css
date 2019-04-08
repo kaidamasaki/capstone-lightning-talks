@@ -1,4 +1,5 @@
 #timer {
+  z-index: 100;
   letter-spacing: 1px;
   position: fixed;
   top: 10px;

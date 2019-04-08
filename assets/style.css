@@ -107,12 +107,28 @@ a:hover {
 }
 
 #slideshow #intro {
-  background: #000;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+
+#slideshow #intro h1 {
+  position: relative;
+  z-index: 2;
+}
+
+#slideshow #intro::before {
+  content: " ";
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0.7;
 
   background-image: url(images/white.svg),
                     url(images/blue.svg),
@@ -121,6 +137,7 @@ a:hover {
                     url(images/green.svg);
   background-size: 150px;
   background-repeat: no-repeat;
+  /* TODO: Rewrite using vmin */
   background-position: 50% 10%,
                        70% 42%,
                        61.5% 85%,
@@ -128,7 +145,7 @@ a:hover {
                        30% 42%;
 }
 
-/* Font for the Colors */
+/* Font colors for the Colors */
 .white {
   color: #fffbd5;
 }
@@ -166,6 +183,7 @@ a:hover {
   margin: 0;
 }
 
+/* TODO: Add media queries for mobile. */
 #slideshow > section > section :first-of-type {
   grid-column: 3;
 }
