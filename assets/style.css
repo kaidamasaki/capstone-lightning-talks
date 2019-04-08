@@ -35,7 +35,7 @@ a:hover {
   color: #89f;
 }
 
-main blockquote {
+#slideshow blockquote {
   text-align: center;
   position: relative;
   font-size: 40px;
@@ -46,7 +46,7 @@ main blockquote {
   line-height: 2em;
 }
 
-main blockquote::before {
+#slideshow blockquote::before {
   font-family: "Times New Roman";
   content: open-quote;
   position: absolute;
@@ -57,7 +57,7 @@ main blockquote::before {
   z-index: 1;
 }
 
-main blockquote::after {
+#slideshow blockquote::after {
   font-family: "Times New Roman";
   content: close-quote;
   position: absolute;
@@ -65,6 +65,10 @@ main blockquote::after {
   right: 250px;
   bottom: 40px;
   font-size: 200px;
+}
+
+#slideshow blockquote strong {
+  text-transform: capitalize;
 }
 
 #slideshow > section {
