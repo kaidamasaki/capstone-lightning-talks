@@ -15,7 +15,7 @@
 }
 
 /* We don't want the timer on mobile. */
-@media (width < 1024px) {
+@media (max-width: 1023px) {
   #timer {
     display: none;
   }
@@ -42,4 +42,16 @@
 
 #timer.overtime {
   color: #f00;
+}
+
+/* Hide scrollbar in fullscreen */
+@media (display-mode: fullscreen) {
+  html {
+    width: 110vw;
+    overflow: hidden;
+  }
+
+  html > * {
+    max-width: 100vw;
+  }
 }

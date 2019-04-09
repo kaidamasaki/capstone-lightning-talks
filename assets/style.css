@@ -199,7 +199,7 @@ a:hover {
   margin-top: 1em;
 }
 
-@media (width < 1024px) {
+@media (max-width: 1023px) {
   #slideshow .traits, #slideshow .pov {
     display: flex;
     flex-direction: column;

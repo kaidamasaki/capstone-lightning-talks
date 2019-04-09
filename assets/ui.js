@@ -5,33 +5,44 @@ function Timer(target) {
   this.tens = 0;
   this.ones = 0;
 
+  this.paused = false;
+  this.started = false;
   this.target = target;
   this.timeLeft = true;
 }
 
 Timer.prototype.start = function() {
-  this.elems = {};
-  this.elems.minutes = document.createTextNode(this.minutes);
+  if (this.started) {
+    this.paused = false;
+  } else {
+    this.started = true;
+    this.elems = {};
+    this.elems.minutes = document.createTextNode(this.minutes);
 
-  this.elems.tens = document.createTextNode(this.tens);
-  let tensWrapper = document.createElement("span");
-  tensWrapper.classList.add("tens");
-  tensWrapper.appendChild(this.elems.tens);
+    this.elems.tens = document.createTextNode(this.tens);
+    let tensWrapper = document.createElement("span");
+    tensWrapper.classList.add("tens");
+    tensWrapper.appendChild(this.elems.tens);
 
-  this.elems.ones = document.createTextNode(this.ones);
-  let onesWrapper = document.createElement("span");
-  onesWrapper.classList.add("ones");
-  onesWrapper.appendChild(this.elems.ones);
-  let colon = document.createTextNode(":");
+    this.elems.ones = document.createTextNode(this.ones);
+    let onesWrapper = document.createElement("span");
+    onesWrapper.classList.add("ones");
+    onesWrapper.appendChild(this.elems.ones);
+    let colon = document.createTextNode(":");
 
-  this.target.appendChild(this.elems.minutes);
-  this.target.appendChild(colon);
-  this.target.appendChild(tensWrapper);
-  this.target.appendChild(onesWrapper);
+    this.target.appendChild(this.elems.minutes);
+    this.target.appendChild(colon);
+    this.target.appendChild(tensWrapper);
+    this.target.appendChild(onesWrapper);
 
-  window.setInterval(this.tick.bind(this), 1000);
+    window.setInterval(this.tick.bind(this), 1000);
 
-  this.display();
+    this.display();
+  }
+}
+
+Timer.prototype.pause = function() {
+  this.paused = true;
 }
 
 Timer.prototype.display = function() {
@@ -41,6 +52,10 @@ Timer.prototype.display = function() {
 }
 
 Timer.prototype.tick = function() {
+  if (this.paused) {
+    return;
+  }
+
   if (this.minutes == 0 && this.tens == 3 && this.ones == 0) {
     this.target.classList.add("urgent");
   }
@@ -140,8 +155,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   });
 
   document.addEventListener("keydown", (event) => {
-    console.log(event);
-
     if (
       (event.code == "Space" && event.shiftKey)
         || event.code == "ArrowUp"
@@ -160,4 +173,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
       slideShow.next()
     }
   });
+
+  document.onfullscreenchange = (event) => {
+    if (!document.fullscreenElement) {
+      timer.pause();
+      button.textContent = "resume";
+      timerElem.appendChild(button);
+    }
+  };
 });
