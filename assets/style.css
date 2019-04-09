@@ -181,6 +181,7 @@ a:hover {
 #slideshow > section > section ul {
   grid-row: 2;
   margin: 0;
+  width: 80%;
 }
 
 #slideshow > section > section :first-of-type {
