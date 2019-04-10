@@ -30,11 +30,16 @@ a:hover {
   color: #89f;
 }
 
+#slideshow section {
+  display: flex;
+  flex-direction: column;
+}
+
 #slideshow blockquote {
   text-align: center;
   position: relative;
   font-size: 40px;
-  margin: 60px auto 0;
+  margin: auto auto 0;
   padding: 0 2.5em;
   quotes: "“" "„" "‘" "’";
   min-height: 2.5em;
@@ -93,7 +98,7 @@ a:hover {
   margin-top: 0.5em;
 }
 
-#slideshow img {
+#slideshow .mana {
   width: 100px;
   margin: 10px 15px 10px 0;
 }
@@ -172,6 +177,10 @@ a:hover {
   grid-template-rows: auto auto;
 }
 
+#slideshow > section > section {
+  margin: auto 0;
+}
+
 #slideshow > section > section h3 {
   grid-row: 1;
   font-size: 60px;
@@ -196,7 +205,6 @@ a:hover {
   display: grid;
   grid-template-columns: 1fr 2em 600px 600px 1fr;
   grid-template-rows: auto auto;
-  margin-top: 1em;
 }
 
 @media (max-width: 1023px) {
@@ -229,7 +237,40 @@ a:hover {
   background: #00160b;
 }
 
-.vs {
+.color-wheel {
+  position: relative;
+}
+
+.color-wheel img {
+  width: 20vmin;
+  position: absolute;
+}
+
+.color-wheel img.white {
+  left: calc(50% - 10vmin);
+}
+
+.color-wheel img.blue {
+  top: calc(50% - 17vmin);
+  left: calc(50% + 22vmin);
+}
+
+.color-wheel img.black {
+  top: calc(50% + 18vmin);
+  left: calc(50% + 8vmin);
+}
+
+.color-wheel img.red {
+  top: calc(50% + 18vmin);
+  right: calc(50% + 8vmin);
+}
+
+.color-wheel img.green {
+  top: calc(50% - 17vmin);
+  right: calc(50% + 22vmin);
+}
+
+span.vs {
   margin: 0 0.25em;
 }
 
