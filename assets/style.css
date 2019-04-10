@@ -208,6 +208,10 @@ a:hover {
 }
 
 @media (max-width: 1023px) {
+  #slideshow h2 {
+    margin-bottom: 1em;
+  }
+
   #slideshow .traits, #slideshow .pov {
     display: flex;
     flex-direction: column;
