@@ -308,3 +308,7 @@ span.vs {
     #00160b, #00160b 50%,
     #061922 50%, #061922);
 }
+
+#resources ul {
+  margin-left: 0.5em;
+}
