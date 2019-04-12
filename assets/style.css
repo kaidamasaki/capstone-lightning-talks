@@ -8,13 +8,14 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #000;
 }
 
 main {
   color: #fff;
-  background-color: #000;
   font-size: 40px;
   font-family: Garamond, Palatino, serif;
+  min-width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -203,7 +204,7 @@ a:hover {
 
 #slideshow .pov {
   display: grid;
-  grid-template-columns: 1fr 2em 600px 600px 1fr;
+  grid-template-columns: 1fr 3em 60fr 60fr 1fr;
   grid-template-rows: auto auto;
 }
 
@@ -321,36 +322,36 @@ span.vs {
 #white-vs-black {
   background: linear-gradient(
     110deg,
-    #211d15, #211d15 50%,
-    #130c0e 50%, #130c0e);
+    #211d15, #211d15 53%,
+    #130c0e 53%, #130c0e);
 }
 
 #blue-vs-red {
   background: linear-gradient(
     110deg,
-    #061922, #061922 50%,
-    #200000 50%, #200000);
+    #061922, #061922 53%,
+    #200000 53%, #200000);
 }
 
 #black-vs-green {
   background: linear-gradient(
     110deg,
-    #130c0e, #130c0e 50%,
-    #00160b 50%, #00160b);
+    #130c0e, #130c0e 53%,
+    #00160b 53%, #00160b);
 }
 
 #red-vs-white {
   background: linear-gradient(
     110deg,
-    #200000, #200000 50%,
-    #211d15 50%, #211d15);
+    #200000, #200000 53%,
+    #211d15 53%, #211d15);
 }
 
 #green-vs-blue {
   background: linear-gradient(
     110deg,
-    #00160b, #00160b 50%,
-    #061922 50%, #061922);
+    #00160b, #00160b 53%,
+    #061922 53%, #061922);
 }
 
 #resources ul {
