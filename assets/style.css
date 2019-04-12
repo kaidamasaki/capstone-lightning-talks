@@ -204,7 +204,7 @@ a:hover {
 
 #slideshow .pov {
   display: grid;
-  grid-template-columns: 1fr 3em 60fr 60fr 1fr;
+  grid-template-columns: 1fr 2fr 6fr 6fr 1fr;
   grid-template-rows: auto auto;
 }
 
