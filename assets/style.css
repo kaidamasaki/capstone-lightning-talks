@@ -251,6 +251,7 @@ a:hover {
 }
 
 .color-wheel img.white {
+  top: calc(50% - 45vmin);
   left: calc(50% - 10vmin);
 }
 
@@ -272,6 +273,45 @@ a:hover {
 .color-wheel img.green {
   top: calc(50% - 17vmin);
   right: calc(50% + 22vmin);
+}
+
+#allies div, #enemies div {
+  text-align: center;
+  text-transform: capitalize;
+  border-bottom: 5px solid #fff;
+  position: absolute;
+}
+
+#allies div {
+  width: 18vmin;
+}
+
+#allies div:first-of-type {
+  top: calc(50% - 26vmin);
+  left: calc(50% - 27vmin);
+  transform: rotate(-45deg);
+}
+
+#allies div:last-of-type {
+  top: calc(50% - 26vmin);
+  right: calc(50% - 27vmin);
+  transform: rotate(45deg);
+}
+
+#enemies div {
+  width: 42vmin;
+}
+
+#enemies div:first-of-type {
+  top: calc(50% - 7.5vmin);
+  left: calc(50% - 33vmin);
+  transform: rotate(-73.5deg);
+}
+
+#enemies div:last-of-type {
+  top: calc(50% - 7.5vmin);
+  right: calc(50% - 33vmin);
+  transform: rotate(73.5deg);
 }
 
 span.vs {
