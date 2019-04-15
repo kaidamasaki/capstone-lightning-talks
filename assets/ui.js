@@ -56,7 +56,7 @@ Timer.prototype.tick = function() {
     return;
   }
 
-  if (this.minutes == 0 && this.tens == 3 && this.ones == 0) {
+  if (this.minutes == 1 && this.tens == 0 && this.ones == 0) {
     this.target.classList.add("urgent");
   }
 

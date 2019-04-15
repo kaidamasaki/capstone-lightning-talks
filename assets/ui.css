@@ -1,17 +1,16 @@
 #timer {
   z-index: 100;
-  letter-spacing: 1px;
+  letter-spacing: 0.1em;
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 0.45em;
+  right: 0.3em;
   color: #fff;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  padding-top: 5px;
-  font-size: 40px;
+  font-size: calc(12px + 1.5vmin);
 }
 
 /* We don't want the timer on mobile. */
@@ -22,10 +21,19 @@
 }
 
 #timer button {
-  margin: -4px 0 0 5px;
-  padding: 5px 5px 3px;
+  margin: -0.25em 0 0 0.6em;
+  padding: 0.5em;
+  min-width: 4em;
+  background: #eee;
   font-family: Helvetica, sans-serif;
   letter-spacing: normal;
+  font-size: calc(8px + 1vmin);
+  border-radius: 0.2em;
+  border: none;
+}
+
+#timer button:hover {
+  background: linear-gradient(#eee, #ccc);
 }
 
 #timer .tens {

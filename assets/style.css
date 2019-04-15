@@ -5,6 +5,10 @@
   src: url(fonts/beleren-bold.ttf) format("truetype");
 }
 
+html {
+  font-size: calc(8px + 1vmin);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -13,7 +17,7 @@ body {
 
 main {
   color: #fff;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-family: Garamond, Palatino, serif;
   min-width: 100%;
 }
@@ -39,7 +43,7 @@ a:hover {
 #slideshow blockquote {
   text-align: center;
   position: relative;
-  font-size: 40px;
+  font-size: 2.5rem;
   margin: auto auto 0;
   padding: 0 2.5em;
   quotes: "“" "„" "‘" "’";
@@ -52,9 +56,9 @@ a:hover {
   font-family: "Times New Roman";
   content: open-quote;
   position: absolute;
-  top: -20px;
+  top: -1.25rem;
   left: 0;
-  font-size: 200px;
+  font-size: 13rem;
   opacity: 0.2;
   z-index: 1;
 }
@@ -64,9 +68,9 @@ a:hover {
   content: close-quote;
   position: absolute;
   opacity: 0.2;
-  bottom: 40px;
+  bottom: 2.5rem;
   right: 0;
-  font-size: 200px;
+  font-size: 12.5rem;
 }
 
 #slideshow blockquote strong {
@@ -74,17 +78,17 @@ a:hover {
 }
 
 #slideshow > section {
-  min-height: calc(100vh - 60px);
-  padding: 40px 15px 20px 30px;
+  min-height: calc(100vh - 3.75rem);
+  padding: 2.5rem 1rem 1.25rem 2rem;
 }
 
 #slideshow h1 {
-  font-size: 80px;
+  font-size: 5rem;
 }
 
 #slideshow h2 {
-  font-size: 80px;
-  margin: 0 0 0 20px;
+  font-size: 5rem;
+  margin: 0 0 0 1.25rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -100,8 +104,8 @@ a:hover {
 }
 
 #slideshow .mana {
-  width: 100px;
-  margin: 10px 15px 10px 0;
+  width: 6.25rem;
+  margin: 0.5rem 1rem 0.5rem 0;
 }
 
 #slideshow .logo {
@@ -183,8 +187,8 @@ a:hover {
 }
 
 #slideshow .compare h3 {
-  font-size: 60px;
-  margin: 30px 0 20px;
+  font-size: 3.75rem;
+  margin: 2rem 0 1.25rem;
 }
 
 #slideshow .compare ul {
@@ -275,7 +279,7 @@ a:hover {
 #allies div, #enemies div {
   text-align: center;
   text-transform: capitalize;
-  border-bottom: 5px solid #fff;
+  border-bottom: 0.25rem solid #fff;
   position: absolute;
 }
 
