@@ -1,106 +1,110 @@
 "use strict";
 
-function Timer(target) {
-  this.seconds = 5 * 60;
+class Timer {
+  constructor(target) {
+    this.seconds = 5 * 60;
 
-  this.target = target;
-  this.paused = false;
-  this.started = false;
-}
-
-Timer.prototype.start = function() {
-  if (this.started) {
+    this.target = target;
     this.paused = false;
-  } else {
-    this.started = true;
-    this.elems = {};
-    this.elems.minutes = document.createTextNode(this.minutes);
+    this.started = false;
+  }
 
-    this.elems.tens = document.createTextNode(this.tens);
-    let tensWrapper = document.createElement("span");
-    tensWrapper.classList.add("tens");
-    tensWrapper.appendChild(this.elems.tens);
+  start() {
+    if (this.started) {
+      this.paused = false;
+    } else {
+      this.started = true;
+      this.elems = {};
+      this.elems.minutes = document.createTextNode(this.minutes);
 
-    this.elems.ones = document.createTextNode(this.ones);
-    let onesWrapper = document.createElement("span");
-    onesWrapper.classList.add("ones");
-    onesWrapper.appendChild(this.elems.ones);
-    let colon = document.createTextNode(":");
+      this.elems.tens = document.createTextNode(this.tens);
+      let tensWrapper = document.createElement("span");
+      tensWrapper.classList.add("tens");
+      tensWrapper.appendChild(this.elems.tens);
 
-    this.target.appendChild(this.elems.minutes);
-    this.target.appendChild(colon);
-    this.target.appendChild(tensWrapper);
-    this.target.appendChild(onesWrapper);
+      this.elems.ones = document.createTextNode(this.ones);
+      let onesWrapper = document.createElement("span");
+      onesWrapper.classList.add("ones");
+      onesWrapper.appendChild(this.elems.ones);
+      let colon = document.createTextNode(":");
 
-    window.setInterval(this.tick.bind(this), 1000);
+      this.target.appendChild(this.elems.minutes);
+      this.target.appendChild(colon);
+      this.target.appendChild(tensWrapper);
+      this.target.appendChild(onesWrapper);
+
+      window.setInterval(this.tick.bind(this), 1000);
+
+      this.display();
+    }
+  }
+
+  pause() {
+    this.paused = true;
+  }
+
+  display() {
+    const seconds = Math.abs(this.seconds);
+
+    this.elems.minutes.nodeValue = Math.floor(seconds / 60);
+    this.elems.tens.nodeValue = Math.floor((seconds % 60) / 10);
+    this.elems.ones.nodeValue = seconds % 10;
+  }
+
+  tick() {
+    if (this.paused) {
+      return;
+    }
+
+    if (this.seconds <= 60) {
+      this.target.classList.add("urgent");
+    }
+
+    if (this.seconds === 0) {
+      this.target.classList.add("overtime");
+    }
+
+    this.seconds -= 1;
 
     this.display();
   }
 }
 
-Timer.prototype.pause = function() {
-  this.paused = true;
-}
+class SlideShow {
+  constructor(target) {
+    this.target = target;
+    this.all = Array.from(this.target.children);
 
-Timer.prototype.display = function() {
-  const seconds = Math.abs(this.seconds);
+    let current = this.all.findIndex(
+      slide =>
+        "#" + slide.id == window.location.hash);
 
-  this.elems.minutes.nodeValue = Math.floor(seconds / 60);
-  this.elems.tens.nodeValue = Math.floor((seconds % 60) / 10);
-  this.elems.ones.nodeValue = seconds % 10;
-}
-
-Timer.prototype.tick = function() {
-  if (this.paused) {
-    return;
+    if (current < 0) {
+      this.current = 0;
+    } else {
+      this.current = current;
+    }
   }
 
-  if (this.seconds <= 60) {
-    this.target.classList.add("urgent");
+  show(index) {
+    let len = this.all.length;
+    // Workaround for negative % results.
+    let modIndex = ((index % len) + len) % len;
+
+    window.location.href = "#" + this.all[modIndex].id;
   }
 
-  if (this.seconds === 0) {
-    this.target.classList.add("overtime");
+  prev() {
+    this.current -= 1;
+
+    this.show(this.current);
   }
 
-  this.seconds -= 1;
+  next() {
+    this.current += 1;
 
-  this.display();
-}
-
-function SlideShow(target) {
-  this.target = target;
-  this.all = Array.from(this.target.children);
-
-  let current = this.all.findIndex(
-    slide =>
-      "#" + slide.id == window.location.hash);
-
-  if (current < 0) {
-    this.current = 0;
-  } else {
-    this.current = current;
+    this.show(this.current);
   }
-}
-
-SlideShow.prototype.show = function(index) {
-  let len = this.all.length;
-  // Workaround for negative % results.
-  let modIndex = ((index % len) + len) % len
-
-  window.location.href = "#" + this.all[modIndex].id;
-}
-
-SlideShow.prototype.prev = function() {
-  this.current -= 1;
-
-  this.show(this.current);
-}
-
-SlideShow.prototype.next = function() {
-  this.current += 1;
-
-  this.show(this.current);
 }
 
 // Only add the button if JS is on.
@@ -130,7 +134,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       event.stopPropagation();
       event.preventDefault();
 
-      slideShow.prev()
+      slideShow.prev();
     } else if (
       (event.code == "Space" && !event.shiftKey
        || event.code == "ArrowDown"
@@ -138,7 +142,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       event.stopPropagation();
       event.preventDefault();
 
-      slideShow.next()
+      slideShow.next();
     }
   });
 
