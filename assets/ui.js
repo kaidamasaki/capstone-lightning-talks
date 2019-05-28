@@ -1,14 +1,11 @@
 "use strict";
 
 function Timer(target) {
-  this.minutes = 5;
-  this.tens = 0;
-  this.ones = 0;
+  this.seconds = 5 * 60;
 
+  this.target = target;
   this.paused = false;
   this.started = false;
-  this.target = target;
-  this.timeLeft = true;
 }
 
 Timer.prototype.start = function() {
@@ -46,9 +43,11 @@ Timer.prototype.pause = function() {
 }
 
 Timer.prototype.display = function() {
-  this.elems.minutes.nodeValue = this.minutes;
-  this.elems.tens.nodeValue = this.tens;
-  this.elems.ones.nodeValue = this.ones;
+  const seconds = Math.abs(this.seconds);
+
+  this.elems.minutes.nodeValue = Math.floor(seconds / 60);
+  this.elems.tens.nodeValue = Math.floor((seconds % 60) / 10);
+  this.elems.ones.nodeValue = seconds % 10;
 }
 
 Timer.prototype.tick = function() {
@@ -56,46 +55,15 @@ Timer.prototype.tick = function() {
     return;
   }
 
-  if (this.minutes == 1 && this.tens == 0 && this.ones == 0) {
+  if (this.seconds <= 60) {
     this.target.classList.add("urgent");
   }
 
-  if (this.minutes == 0 && this.tens == 0 && this.ones == 0) {
-    this.timeLeft = false;
-    this.minutes = 0;
-    this.tens = 0;
-    this.ones = 0;
-
+  if (this.seconds === 0) {
     this.target.classList.add("overtime");
   }
 
-  if (this.timeLeft) {
-    if (this.ones == 0) {
-      if (this.tens == 0) {
-        this.minutes -= 1;
-        this.tens = 5;
-        this.ones = 9;
-      } else {
-        this.tens -= 1;
-        this.ones = 9;
-      }
-    } else {
-      this.ones -= 1;
-    }
-  } else {
-    if (this.ones == 9) {
-      if (this.tens == 5) {
-        this.minutes += 1;
-        this.tens = 0;
-        this.ones = 0;
-      } else {
-        this.tens += 1;
-        this.ones = 0;
-      }
-    } else {
-      this.ones += 1;
-    }
-  }
+  this.seconds -= 1;
 
   this.display();
 }
