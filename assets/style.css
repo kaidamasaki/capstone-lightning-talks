@@ -188,23 +188,23 @@ a:hover {
 
 #slideshow .compare h3 {
   font-size: 3.75rem;
-  margin: 2rem 0 1.25rem;
+  margin: 2rem 0 0;
 }
 
 #slideshow .compare ul {
   margin: 0;
 }
 
-#slideshow .traits div {
+#slideshow .traits section {
   min-width: 10em;
   margin-left: 10%;
 }
 
-#slideshow .pov div:first-child {
+#slideshow .pov section:first-child {
   margin-right: 2em;
 }
 
-#red-vs-white .pov div:first-child {
+#red-vs-white .pov section:first-child {
   margin-left: 1em;
 }
 
