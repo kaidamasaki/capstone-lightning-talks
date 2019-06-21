@@ -86,12 +86,12 @@ class SlideShow {
     }
   }
 
-  show(index) {
-    let len = this.all.length;
+  show(rawIndex) {
+    const len = this.all.length;
     // Workaround for negative % results.
-    let modIndex = ((index % len) + len) % len;
+    const index = ((rawIndex || this.current % len) + len) % len;
 
-    window.location.href = "#" + this.all[modIndex].id;
+    window.location.href = "#" + this.all[index].id;
   }
 
   prev() {
@@ -108,7 +108,7 @@ class SlideShow {
 }
 
 // Only add the button if JS is on.
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', () => {
   let timerElem = document.getElementById("timer");
   let timer = new Timer(document.getElementById("timer"))
 
@@ -123,7 +123,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   button.addEventListener("click", () => {
     button.remove();
     timer.start();
-    document.documentElement.requestFullscreen();
+    document.documentElement.requestFullscreen().then(() => {
+      window.setTimeout(() => slideShow.show(), 100)
+    });
   });
 
   document.addEventListener("keydown", (event) => {
@@ -146,11 +148,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
   });
 
-  document.onfullscreenchange = (event) => {
+  document.onfullscreenchange = () => {
     if (!document.fullscreenElement) {
       timer.pause();
       button.textContent = "resume";
       timerElem.appendChild(button);
+
+      window.setTimeout(() => slideShow.show(), 100);
     }
   };
 });
