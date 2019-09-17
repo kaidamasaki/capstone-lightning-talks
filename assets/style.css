@@ -177,18 +177,16 @@ a:hover {
 }
 
 #slideshow .compare {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-#slideshow .compare {
-  margin: auto 0;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 10vw;
+  margin: auto;
 }
 
 #slideshow .compare h3 {
   font-size: 3.75rem;
   margin: 2rem 0 0;
+  order: -1;
 }
 
 #slideshow .compare ul {
@@ -340,6 +338,10 @@ span.vs {
     #00160b 53%, #00160b);
 }
 
+#black-vs-green .compare > *:last-of-type {
+  margin-right: -1vw;
+}
+
 #red-vs-white {
   background: linear-gradient(
     110deg,
@@ -347,11 +349,19 @@ span.vs {
     #211d15 53%, #211d15);
 }
 
+#red-vs-white .compare > *:last-of-type {
+  margin-right: -4vw;
+}
+
 #green-vs-blue {
   background: linear-gradient(
     110deg,
     #00160b, #00160b 53%,
     #061922 53%, #061922);
+}
+
+#green-vs-blue .compare > *:last-of-type {
+  margin-right: -0.5vw;
 }
 
 #resources ul {
