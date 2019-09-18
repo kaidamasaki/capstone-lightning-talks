@@ -186,7 +186,7 @@ a:hover {
 #slideshow .compare h3 {
   font-size: 3.75rem;
   margin: 2rem 0 0;
-  order: -1;
+  grid-row: 1;
 }
 
 #slideshow .compare ul {
@@ -206,7 +206,7 @@ a:hover {
   margin-left: 1em;
 }
 
-@media (max-width: 1023px) {
+@media screen and (max-width: 1023px) {
   #slideshow h2 {
     margin-bottom: 1em;
   }
@@ -338,19 +338,11 @@ span.vs {
     #00160b 53%, #00160b);
 }
 
-#black-vs-green .compare > *:last-of-type {
-  margin-right: -1vw;
-}
-
 #red-vs-white {
   background: linear-gradient(
     110deg,
     #200000, #200000 53%,
     #211d15 53%, #211d15);
-}
-
-#red-vs-white .compare > *:last-of-type {
-  margin-right: -4vw;
 }
 
 #green-vs-blue {
@@ -360,8 +352,27 @@ span.vs {
     #061922 53%, #061922);
 }
 
-#green-vs-blue .compare > *:last-of-type {
-  margin-right: -0.5vw;
+/* Fullscreened on my laptop. */
+@media screen and (width: 1440px) {
+  #white-vs-black .compare > :last-of-type {
+    margin-right: 2vw;
+  }
+
+  #blue-vs-red .compare > :last-of-type {
+    margin-right: 2vw;
+  }
+  
+  #black-vs-green .compare > :last-of-type {
+    margin-right: 0;
+  }
+
+  #red-vs-white .compare > :last-of-type {
+    margin-right: -3vw;
+  }
+
+  #green-vs-blue .compare > :last-of-type {
+    margin-right: 1vw;
+  }
 }
 
 #resources ul {
