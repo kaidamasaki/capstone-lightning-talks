@@ -2,7 +2,7 @@
   font-family: "Beleren";
   font-style: normal;
   font-weight: 800;
-  src: url(fonts/beleren-bold.ttf) format("truetype");
+  src: url(fonts/beleren-bold.woff2) format("woff2");
 }
 
 html {
