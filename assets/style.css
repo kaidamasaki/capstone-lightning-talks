@@ -35,6 +35,10 @@ a:hover {
   color: #89f;
 }
 
+p {
+  margin: 1em 0.66em 0;
+}
+
 #slideshow section {
   display: flex;
   flex-direction: column;
@@ -350,6 +354,15 @@ span.vs {
     110deg,
     #00160b, #00160b 53%,
     #061922 53%, #061922);
+}
+
+#arena {
+  position: relative;
+}
+
+#arena p:last-child {
+  position: absolute;
+  bottom: 1.25em;
 }
 
 /* Fullscreened on my laptop. */
