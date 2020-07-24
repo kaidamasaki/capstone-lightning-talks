@@ -35,10 +35,6 @@ a:hover {
   color: #89f;
 }
 
-p {
-  margin: 1em 0.66em 0;
-}
-
 #slideshow section {
   display: flex;
   flex-direction: column;
@@ -356,15 +352,6 @@ span.vs {
     #061922 53%, #061922);
 }
 
-#arena {
-  position: relative;
-}
-
-#arena p:last-child {
-  position: absolute;
-  bottom: 1.25em;
-}
-
 /* Fullscreened on my laptop. */
 @media screen and (width: 1440px) {
   #white-vs-black .compare > :last-of-type {
@@ -388,6 +375,6 @@ span.vs {
   }
 }
 
-#resources ul {
+#resources ul, #arena ul {
   margin-left: 0.5em;
 }
