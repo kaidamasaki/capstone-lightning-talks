@@ -1,15 +1,14 @@
-# Magic Colors Lightning Talk #
+# Capstone Lightning Talk #
 
-A talk on the colors of <a href="https://magic.wizards.com/en"><em>Magic: the Gathering</em></a>.
+Here are a collection of lightning talks for a smattering of topics relevant to capstones.
 
-## Resources ##
-* White: [The Great White Way Revisited](https://magic.wizards.com/en/articles/archive/making-magic/great-white-way-revisited-2015-07-13)
-* Blue: [True Blue Revisited](https://magic.wizards.com/en/articles/archive/making-magic/true-blue-revisited-2015-07-20)
-* Black: [In the Black Revisited](https://magic.wizards.com/en/articles/archive/making-magic/black-revisited-2015-07-27)
-* Red: [Seeing Red Revisited](https://magic.wizards.com/en/articles/archive/making-magic/seeing-red-revisited-2015-08-03)
-* Green: [It's Not Easy Being Green Revisited](https://magic.wizards.com/en/articles/archive/making-magic/its-not-easy-being-green-revisited-2015-08-10)
-* Enemy Colors: [Pie Fights](https://magic.wizards.com/en/articles/archive/making-magic/pie-fights-2016-11-14)
-* Ally Colors: [Thank You for Being a Friend](https://magic.wizards.com/en/articles/archive/making-magic/thank-you-being-friend-2017-03-20)
-* These
-Slides: [kaidamasaki.github.io/magic-colors-lightning-talk](https://kaidamasaki.github.io/magic-colors-lightning-talk)
-</ul>
+There are all just quick bird's eye views of the subjects at hand.
+
+## Topics ##
+
+1. [How I made these slides](html-slides.html)
+2. [How inheritance is implemented](inheritance.html)
+3. [Things you should know about databases](databases.html)
+4. [How `git rebase` will ruin your day](rebase.html)
+5. [How garbage collection is implemented](garbage-collection.html)
+6. [The types of software licenses](licenses.html)
