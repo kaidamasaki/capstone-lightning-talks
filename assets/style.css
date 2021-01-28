@@ -5,11 +5,11 @@ html {
 body {
   margin: 0;
   padding: 0;
+  color: #fff;
   background-color: #000;
 }
 
 main {
-  color: #fff;
   font-size: 2.5rem;
   font-family: Garamond, Palatino, serif;
   min-width: 100%;
@@ -19,12 +19,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-a, a:visited {
-  color: #56f;
+p {
+  margin: 1em 2em 0;
 }
 
-a:hover {
-  color: #89f;
+ul {
+  margin: 0.5em 2.5em auto;
 }
 
 #slideshow section {
@@ -36,7 +36,7 @@ a:hover {
   text-align: center;
   position: relative;
   font-size: 2.5rem;
-  margin: auto auto 0;
+  margin: auto auto 0.5em;
   padding: 0 2.5em;
   quotes: "“" "„" "‘" "’";
   min-height: 2.5em;
@@ -80,7 +80,7 @@ a:hover {
 
 #slideshow h2 {
   font-size: 5rem;
-  margin: 0 0 0 1.25rem;
+  margin: 0 0 2.5rem 1.25rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -110,32 +110,21 @@ a:hover {
 
 #slideshow .compare {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   column-gap: 10vw;
-  margin: auto;
+  margin: auto 2em;
+  width: calc(100% - 4em);
 }
 
 #slideshow .compare h3 {
   font-size: 3.75rem;
-  margin: 2rem 0 0;
+  margin: 0;
   grid-row: 1;
+  text-align: center;
 }
 
 #slideshow .compare ul {
-  margin: 0;
-}
-
-#slideshow .traits section {
-  min-width: 10em;
-  margin-left: 10%;
-}
-
-#slideshow .pov section:first-child {
-  margin-right: 2em;
-}
-
-#red-vs-white .pov section:first-child {
-  margin-left: 1em;
+  margin: 0 auto 0 0;
 }
 
 @media screen and (max-width: 1023px) {

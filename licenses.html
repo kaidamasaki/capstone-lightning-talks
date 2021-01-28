@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>The Types of Software Licenses</title>
+
+    <link href="./assets/style.css" rel="stylesheet" />
+    <link href="./assets/licenses.css" rel="stylesheet" />
+
+    <script src="./assets/ui.js"></script>
+    <link href="./assets/ui.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="timer"></div>
+
+    <main id="slideshow">
+      <section id="intro">
+        <h1>The Types of Software Licenses</h1>
+      </section>
+
+      <section id="overview">
+        <h2>Overview</h2>
+
+        <p>There are five main kinds of software licenses.</p>
+
+        <ul>
+          <li>Proprietary</li>
+          <li>Public Domain</li>
+          <li>Permissive</li>
+          <li>Weak "Copyleft"</li>
+          <li>Strong "Copyleft"</li>
+        </ul>
+
+        <p>
+          Once you pick a category read up on the specific licenses it includes.
+        </p>
+      </section>
+
+      <section id="proprietary">
+        <h2>Proprietary</h2>
+
+        <blockquote>
+          All Rights Reserved
+        </blockquote>
+
+        <p>
+          The default under copyright law in most jurisdictions.
+        </p>
+
+        <section class="compare">
+          <h3>Pros</h3>
+          <ul>
+            <li>If it's a side project you own it</li>
+            <li>Easy to commercialize</li>
+          </ul>
+
+          <h3>Cons</h3>
+          <ul>
+            <li>Your employer probably owns it</li>
+            <li>Closed Source</li>
+          </ul>
+        </section>
+      </section>
+
+      <section id="public-domain">
+        <h2>Public Domain</h2>
+
+        <blockquote>
+          I release this into the public domain
+        </blockquote>
+
+        <p>
+          If you don't care what people do with your code you can
+          release it into the Public Domain.
+        </p>
+
+        <section class="compare">
+          <h3>Pros</h3>
+          <ul>
+            <li>Simple</li>
+          </ul>
+
+          <h3>Cons</h3>
+          <ul>
+            <li>You no longer own it</li>
+          </ul>
+        </section>
+      </section>
+
+      <section id="public-domain-examples">
+        <h2>Public Domain (examples)</h2>
+
+        <p>Github provides the following public domain equivalent licenses:</p>
+
+        <ul>
+          <li>Creative Commons Zero v1.0 Universal</li>
+          <li>The Unlicense</li>
+        </ul>
+
+        <p>
+          Ways they differ from saying "I release this into the public domain":
+        </p>
+
+        <ul>
+          <li>Works internationally</li>
+          <li>Warranty free disclaimer</li>
+          <li>Liability disclaimer</li>
+        </ul>
+      </section>
+
+      <section id="permissive">
+        <h2>Permissive</h2>
+
+        <p>
+          These licenses are all pretty much "do whatever you like
+          with this code".
+        </p>
+        <section class="compare">
+          <h3>Pros</h3>
+          <ul>
+            <li>You can commercialize it</li>
+            <li>Can be mixed into almost any project safely</li>
+            <li>You retain ownership</li>
+          </ul>
+          <h3>Cons</h3>
+          <ul>
+            <li>Someone else can commercialize it</li>
+          </ul>
+        </section>
+      </section>
+
+      <section id="permissive-examples">
+        <h2>Permissive (examples)</h2>
+
+        <p>Github provides the following permissive licenses:</p>
+
+        <ul>
+          <li>Apache License 2.0</li>
+          <li>MIT License</li>
+          <li>BSD 2-Clause "Simplified" License</li>
+          <li>BSD 3-Clause "New" or "Revised" License</li>
+          <li>Boost Software License 1.0</li>
+        </ul>
+      </section>
+
+      <section id="copyleft">
+        <h2>Copyleft</h2>
+
+        <p>
+          These licenses require releasing changes under the same license.
+        </p>
+
+        <ul>
+          <li>Comes in "weak" and "strong" varieties</li>
+          <li>The most restrive open source licenses</li>
+          <li>Intended as the opposite of copyright</li>
+          <li>Use copyright itself to accomplish this goal</li>
+          <li>Sometimes called "share alike"</li>
+          <li>Sometimes called "viral"</li>
+        </ul>
+      </section>
+
+      <section id="weak-copyleft">
+        <h2>Weak Copyleft</h2>
+
+        <p>
+          Weak copyleft licenses apply <em>only</em> to the changes
+          made <em>directly</em> to a project.
+        </p>
+
+        <section class="compare">
+          <h3>Pros</h3>
+          <ul>
+            <li>All changes <em>must</em> be open sourced</li>
+            <li>You retain ownership</li>
+            <li>Difficult to commercialize</li>
+          </ul>
+          <h3>Cons</h3>
+          <ul>
+            <li>Difficult to commercialize</li>
+            <li>Can't hide "secret sauce"</li>
+          </ul>
+        </section>
+      </section>
+
+      <section id="weak-copyleft-examples">
+        <h2>Weak Copyleft (examples)</h2>
+
+        <p>Github provides the following weak copyleft licenses:</p>
+
+        <ul>
+          <li>Eclipse Public License 2.0</li>
+          <li>GNU Lesser General Public License v2.1</li>
+          <li>Mozilla Public License 2.0</li>
+        </ul>
+      </section>
+      <section id="strong-copyleft">
+        <h2>Strong Copyleft</h2>
+        
+        <p>
+          Strong copyleft licenses apply to all changes made to a
+          project <em>and</em> anything that uses it as a dependency.
+        </p>
+
+        <section class="compare">
+          <h3>Pros</h3>
+          <ul>
+            <li>All changes <em>must</em> be open sourced</li>
+            <li>Dependents <em>must</em> be open sourced</li>
+            <li>You retain ownership</li>
+            <li>Difficult to commercialize</li>
+          </ul>
+          <h3>Cons</h3>
+          <ul>
+            <li>Difficult to commercialize</li>
+            <li>Can't hide "secret sauce"</li>
+            <li>Scares lawyers</li>
+          </ul>
+        </section>
+      </section>
+
+      <section id="strong-copyleft-examples">
+        <h2>Strong Copyleft (examples)</h2>
+
+        <p>Github provides the following strong copyleft licenses:</p>
+
+        <ul>
+          <li>GNU General Public License v3.0</li>
+          <li>GNU Affero General Public License v3.0</li>
+          <li>GNU General Public License v2.0</li>
+        </ul>
+      </section>
+
+      <section id="creative-commons">
+        <h2>Creative Commons</h2>
+
+        <p>
+          These are related are not recommended for software use
+          (aside from CC0).  They're a good fit for assets you create
+          (or want to use) in your projects though.
+        </p>
+
+        <p>They come in various combinations that include one or more of:</p>
+
+        <ul>
+          <li>Attribution (aka "BY")</li>
+          <li>Share Alike (aka "SA")</li>
+          <li>Non Commercial (aka "NC")</li>
+          <li>No Derivatives (aka "ND")</li>
+        </ul>
+      </section>
+
+      <section id="resources">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="https://docs.github.com/en/github/building-a-strong-community/adding-a-license-to-a-repository">Adding a license to a repository</a></li>
+          <li><a href="https://opensource.guide/legal/#which-open-source-license-is-appropriate-for-my-project">Which open source license is appropriate for my project?</a></li>
+          <li>
+            <a href="https://arstechnica.com/gadgets/2020/02/how-to-choose-an-open-source-license/">
+              Open source licenses: What, which, and why
+            </a>
+          </li>
+          <li>
+            <a href="https://creativecommons.org/about/cclicenses/">
+              About CC Licenses
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
