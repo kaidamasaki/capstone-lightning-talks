@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>git rebase Considered Harmful</title>
+
+    <link href="./assets/style.css" rel="stylesheet" />
+    <link href="./assets/rebase.css" rel="stylesheet" />
+
+    <script src="./assets/ui.js"></script>
+    <link href="./assets/ui.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="timer"></div>
+
+    <main id="slideshow">
+      <section id="intro">
+        <h1><code>git rebase</code> Considered Harmful</h1>
+      </section>
+
+      <section id="what-is-it">
+        <h2>What is <code>git rebase</code>?</h2>
+
+        <ul>
+          <li>Dangerous</li>
+          <li>A Terrible Hack</li>
+          <li>A Source of Bugs</li>
+          <li>A Lie</li>
+        </ul>
+
+        <p>
+          Lots of people like it because they miss the
+          <del>merge conflicts</del> <ins>linear history</ins> that legacy
+          version control systems had.
+        </p>
+
+        <p>
+          More specifically it is a dangerous terrible hack that lets you
+          lie about your commit history to make it appear that you all
+          took turns making commits one-at-a-time.
+        </p>
+      </section>
+
+      <section id="dangerous">
+        <h2>Dangerous</h2>
+
+        <p>
+          <code>git rebase</code> is dangerous because
+          it <em>destroys commit history</em>.
+        </p>
+
+        <p>
+          It takes commits <em>off of your branch</em> and "replays"
+          them on top of the branch you want to rebase onto. These
+          "replayed" commits have <em>no relation</em> to your
+          previous commits.
+        </p>
+
+        <p>
+          It's like you've kidnapped the originals and replaced
+          them with clones.
+        </p>
+
+        <p>
+          And like clones they don't have the same parents as the originals.
+        </p>
+      </section>
+
+      <section id="a-terrible-hack">
+        <h2>A Terrible Hack</h2>
+
+        <p>
+          <code>git rebase</code> is a terrible hack because it
+          doesn't preserve relationships.
+        </p>
+
+        <p>
+          In Git all of the logic that it uses to tell what changes
+          are made between different commits and how to resolve
+          conflicts is dependent on parent/child relationships.
+        </p>
+
+        <p>
+          This is <em>especially</em> true in the case where you're
+          merging multiple branches into a single one over time.
+        </p>
+
+        <p>
+          Without this information you often wind up resolving the
+          same conflicts multiple times or sometimes even dropping
+          commits.
+        </p>
+      </section>
+
+      <section id="source-of-bugs">
+        <h2>A Source of Bugs</h2>
+
+        <p>
+          <code>git rebase</code> is a source of bugs because it
+          causes more merge conflits.
+        </p>
+
+        <p>
+          Having additional conflicts means that you wind
+          up <em>resolving</em> more merge conflicts.  Since manually
+          resolving merge conflicts is an error prone
+          process <em>every time</em> resolve one you increase your
+          odds of introducing a bug.
+        </p>
+
+        <p>
+          This is especially true because you pay a lot of attention
+          the <em>first</em> time you resolve a merge conflict but
+          after that it's human nature to skim over it.
+        </p>
+      </section>
+
+      <section id="a-lie">
+        <h2>A Lie</h2>
+
+        <p>
+          <code>git rebase</code> is a lie because you
+          <em>didn't actually</em> take turns writing commits
+          one at a time!
+        </p>
+
+        <p>
+          This is a somewhat minor issue compared to the above but not
+          having the branching history accurately reflected can make
+          it much harder to tell when a feature was started and
+          finished.
+        </p>
+
+        <p>
+          Please be honest with Git and with yourself, unless it's
+          your team's policy don't rebase your code.
+        </p>
+      </section>
+
+      <section id="resources">
+        <h2>Resources</h2>
+        <ul>
+          <li>
+            <a href="https://en.wikipedia.org/wiki/Considered_harmful">
+              Considered Harmful
+            </a>
+          </li>
+          <li>
+            <a href="https://git-scm.com/docs/git-rebase">
+              <code>git rebase</code> documentation
+            </a>
+          </li>
+        </ul>
+
+        <p>
+          And because you'll need these sooner or later if
+          you <code>git rebase</code>:
+        </p>
+        
+        <ul>
+          <li>
+            <a href="https://medium.com/better-programming/how-to-resolve-git-conflicts-faster-and-more-easily-in-your-favorite-ide-9d2984283a79">
+              How to Resolve Git Conflicts Faster and More Easily in Your Favorite IDE
+            </a>
+          </li>
+          <li>
+            <a href="https://www.geeksforgeeks.org/recovering-lost-commits-in-git/">
+              Recovering Lost Commits in Git
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

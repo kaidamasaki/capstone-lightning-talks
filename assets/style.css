@@ -23,8 +23,26 @@ p {
   margin: 1em 2em 0;
 }
 
-ul {
+ul, ol {
   margin: 0.5em 2.5em auto;
+}
+
+a {
+  color: #39f;
+}
+
+a:visited {
+  color: #d9d;
+}
+
+a:hover {
+  color: #39f;
+}
+
+code {
+  background: #fff3;
+  padding: 0.05em 0.15em;
+  margin: -0.05em -0.15em;
 }
 
 #slideshow section {

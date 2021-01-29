@@ -7,18 +7,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #7ca8cb;
 }
 
-a {
-  color: #7ca8cb;
-}
-
-a:visited {
-  color: #caa6dd;
-}
-
-a:hover, a:active {
-  color: #7ca8cb;
-}
-
 #overview ul {
   margin-bottom: 0;
 }

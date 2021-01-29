@@ -1,0 +1,42 @@
+body {
+  color: #04c835;
+  background: #1c2009;
+}
+
+h1, h2, h3 {
+  color: #05f040;
+}
+
+code {
+  background: #0004;
+}
+
+code {
+  margin: 0 0 0 0.1em;
+}
+
+del {
+  text-decoration: none;
+  display: inline-block;
+}
+
+del::after {
+  content: " ";
+  border: 0.05em solid #04c835;
+  display: block;
+  width: calc(100% + 0.15em);
+  margin: -0.55em 0 0 -0.1em;
+}
+
+ins {
+  text-decoration: none;
+  font-style: italic;
+}
+
+#what-is-it ul {
+  margin-bottom: 0.1em;
+}
+
+h2 + p code {
+  margin-left: -0.15em;
+}
