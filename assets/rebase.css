@@ -1,10 +1,10 @@
 body {
-  color: #04c835;
+  color: #e6ffce;
   background: #1c2009;
 }
 
 h1, h2, h3 {
-  color: #05f040;
+  color: #a3ed66;
 }
 
 code {
@@ -22,7 +22,7 @@ del {
 
 del::after {
   content: " ";
-  border: 0.05em solid #04c835;
+  border: 0.05em solid #e6e4ce;
   display: block;
   width: calc(100% + 0.15em);
   margin: -0.55em 0 0 -0.1em;
