@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <title>How Inheritance is Implemented</title>
+
+    <link href="./assets/style.css" rel="stylesheet" />
+    <link href="./assets/inheritance.css" rel="stylesheet" />
+
+    <script src="./assets/ui.js"></script>
+    <link href="./assets/ui.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div id="timer"></div>
+
+    <main id="slideshow">
+      <section id="intro">
+        <h1>How Inheritance is Implemented</h1>
+        <p>(specifically class based inheritance)</p>
+      </section>
+
+      <section id="v-tables-intro">
+        <h2>V-Tables (Intro)</h2>
+
+        <p>
+          A Virtual Table (or V-Table for short) is the most common
+          way of implementing methods in a class based language.
+        </p>
+
+        <p>
+          In a system that uses V-Tables for inheritance method
+          references are stored in the v-table and the fields (aka
+          instance variables) of an object are stored on the actual
+          instance.
+        </p>
+
+        <p>
+          The V-Table holds all of the methods for a given class and
+          then a reference to the parent's methods.
+        </p>
+      </section>
+
+      <section id="vtables-layout">
+        <h2>V-Tables (Layout)</h2>
+
+        <section class="cards">
+          <table>
+            <tr><th>V-Table for Class <code>Person</code> at 0x0800</th></tr>
+            <tr><td><strong>Parent is Object at 0x0042</strong></td></tr>
+            <tr><td>Method <code>to_s</code></td></tr>
+            <tr><td>Method <code>login</code></td></tr>
+          </table>
+
+          <table>
+            <tr><th>V-Table for Class <code>Driver</code> at 0x0bf0</th></tr>
+            <tr><td><strong>Parent is Person at 0x0800</strong></td></tr>
+            <tr><td>Method <code>to_s</code></td></tr>
+            <tr><td>Method <code>schedule_ride</code></td></tr>
+          </table>
+        </section>
+
+        <p>
+          In this example we have <code>Driver</code> inherit from
+          <code>Person</code> and override the <code>to_s</code>
+          method but not the <code>login</code> method.
+        </p>
+
+        <p>
+          We also add the <code>schedule_ride</code> method, hence the extra
+          row in the <code>Driver</code> table.
+        </p>
+      </section>
+
+      <section id="instance-layout">
+        <h2>Instance Layout</h2>
+
+        <section class="cards">
+          <table>
+            <tr><th>Instance of <code>Person</code></th></tr>
+            <tr>
+              <td>
+                <strong>
+                  V-Table for class <code>Person</code> at 0x0800
+                </strong>
+              </td>
+            </tr>
+            <tr><td>Field <code>name</code></td></tr>
+            <tr><td>Field <code>phone_number</code></td></tr>
+          </table>
+
+          <table>
+            <tr><th>Instance of <code>Driver</code></th></tr>
+            <tr>
+              <td>
+                <strong>
+                  V-Table for class <code>Driver</code> at 0x0bf0
+                </strong>
+              </td>
+            </tr>
+            <tr><td>Field <code>name</code></td></tr>
+            <tr><td>Field <code>phone_number</code></td></tr>
+            <tr><td>Field <code>vehicle_id</code></td></tr>
+          </table>
+        </section>
+
+        <p>
+          With instances the new fields for subclasses are just added
+          to the bottom of the data-structure since they have all of
+          the fields that their parents do.
+        </p>
+      </section>
+
+      <section id="field-resolution">
+        <h2>Field Resolution</h2>
+
+        <p>
+          Finding the location of a field in an instance is pretty
+          straight-forward.  Since fields are only ever added to the
+          end a given field will always be in the same place.
+        </p>
+        <p>
+          This means that the methods in the parent class don't need
+          to know anything about the existence of the new fields since
+          they can just ignore them and access the fields at the
+          location they expect.
+        </p>
+
+        <p>
+          However method resolution is a little more complex.
+        <p>
+      </section>
+      <section id="method-resolution">
+        <h2>Method Resolution</h2>
+
+        <p>
+          Method resolution is done via those v-tables we mentioned
+          earlier.  Each instance has a reference to the v-table
+          corresponding to its class.
+        </p>
+
+        <p>
+          When you want to call a method you look in the v-table and
+          simply check if it's there.  If there's one in that v-table
+          then you just use that.
+        </p>
+
+        <p>
+          If there <em>isn't</em> then you just look at the parent's
+          v-table and check <em>that</em> one and so-on up the
+          inheritance chain.
+        </p>
+
+        <p>
+          This makes overriding methods work because the child's
+          methods are found before the parent's.
+        </p>
+      </section>
+
+      <section id="resources">
+        <h2>Resources</h2>
+        <ul>
+          <li>
+            <a href="https://en.wikipedia.org/wiki/Virtual_method_table">
+              Virtual method table (Wikipedia)
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

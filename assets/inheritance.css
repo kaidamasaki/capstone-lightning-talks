@@ -1,0 +1,33 @@
+body {
+  color: #f288fc;
+  background: #210124;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #e9357d;
+}
+
+tr {
+  display: block;
+  border: 0.1em solid #e9357d;
+  border-top-width: 0;
+  padding: 0.1em;
+}
+
+tr:first-child {
+  border-top-width: 0.1em;
+}
+
+td, th {
+  display: block;
+  padding: 0.25em;
+}
+
+th {
+  color: #210124;
+  background: #f288fc
+}
+
+th code {
+  background: #0003;
+}

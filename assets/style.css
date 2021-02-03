@@ -99,14 +99,6 @@ code {
 #slideshow h2 {
   font-size: 5rem;
   margin: 0 0 2.5rem 1.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-#slideshow h2 span {
-  display: flex;
-  align-items: center;
 }
 
 #slideshow li {
@@ -156,4 +148,11 @@ code {
     align-items: center;
     margin-top: 1em;
   }
+}
+
+#slideshow .cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 auto;
 }
