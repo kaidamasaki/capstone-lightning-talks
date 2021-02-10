@@ -7,8 +7,8 @@ There are all just quick bird's eye views of the subjects at hand.
 ## Topics ##
 
 1. [How inheritance is implemented](inheritance.html)
-2. [Things you should know about databases](databases.html)
+2. [Shell Scripting](shell.html)
 3. [`git rebase` considered harmful](rebase.html)
-4. [How garbage collection is implemented](garbage-collection.html)
+4. [How to use Cron](cron.html)
 5. [The types of software licenses](licenses.html)
 6. [Progressive Enhancement](progressive-enhancement.html)
