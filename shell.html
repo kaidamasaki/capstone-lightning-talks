@@ -7,6 +7,7 @@
 
     <link href="./assets/style.css" rel="stylesheet" />
     <link href="./assets/shell.css" rel="stylesheet" />
+    <link href="./assets/code.css" rel="stylesheet" />
 
     <script src="./assets/ui.js"></script>
     <link href="./assets/ui.css" rel="stylesheet" />
@@ -20,36 +21,237 @@
         <h1>Shell Scripting</h1>
       </section>
 
-      <section id="first-topic">
-        <h2>Title of the First Topic</h2>
+      <section id="what-is">
+        <h2>What is Shell Scripting?</h2>
 
-        <blockquote>
-          Descriptive quote if it applies?
-        </blockquote>
+        <p>
+          At its core shell scripting is just storing a bunch of
+          commands you would type into the prompt in a file to
+          make them repeatable.
+        </p>
 
-        <section class="compare">
-          <h3>Positives</h3>
-          <ul>
-            <li>Some</li>
-            <li>Good</li>
-            <li>Stuff</li>
-          </ul>
+        <p>
+          This is similar to how you can store commands from the REPL
+          for Ruby or Python in a file and re-run them.
+        </p>
 
-          <h3>Negatives</h3>
-          <ul>
-            <li>Some</li>
-            <li>Bad</li>
-            <li>Stuff</li>
-          </ul>
-        </section>
+        <p>
+          As you will find though, storing things in files makes
+          things much more powerful.
+        </p>
       </section>
 
-      <section id="resources">
-        <h2>Resources</h2>
-        <ul>
-          <li>A relevant link</li>
-          <li>Another relevant link!</li>
-        </ul>
+      <section id="shebang">
+        <h2>#!</h2>
+
+        <p>
+          All proper shell scripts start with a special kind of
+          command called a "shebang" (short for "hash bang").
+        </p>
+
+        <p>
+          They tell your shell what interpreter to use to run the
+          script.  We will use <code>#!/bin/zsh</code>.
+        </p>
+
+        <p>
+          A simple script would be:
+        </p>
+
+        <pre>
+<span class="comment">#!/bin/zsh</span>
+
+<span class="builtin">echo</span> <span class="string">'The dog goes: Bark'</span>
+        </pre>
+      </section>
+
+      <section id="execute">
+        <h2>Execute Permission</h2>
+
+        <p>
+          The second thing each script needs is permission to be run
+          as a program.
+        </p>
+
+        <p>
+          We can do this using the <code>chmod</code> command.
+        </p>
+
+        <pre>
+<span class="sh">./dog</span>
+<span class="output">zsh: permission denied: ./dog</span>
+<span class="sh">chmod +x dog</span>
+<span class="sh">./dog</span>
+<span class="output">The dog goes: Bark</span>
+        </pre>
+      </section>
+      
+      <section id="path">
+        <h2>PATH</h2>
+
+        <p>
+          Notice that we have to do <code>./dog</code> but we can just
+          say <code>cat</code>.
+        </p>
+
+        <p>
+          To fix this we can put our <code>dog</code> command into a
+          folder on our <code>PATH</code>.
+        </p>
+
+        <pre>
+<span class="comment"># Make a "bin" dir in our home directory.</span>
+<span class="sh">mkdir -p $HOME/bin</span>
+<span class="comment"># Add $HOME/bin to our zsh path.</span>
+<span class="sh">echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zshrc</span>
+<span class="comment"># Reload our zsh settings.</span>
+<span class="sh">source ~/.zshrc</span>
+<span class="sh">dog</span>
+<span class="output">The dog goes: Bark</span>
+        </pre>
+      </section>
+
+      <section id="arguments">
+        <h2>Arguments</h2>
+
+        <p>
+          In a shell script the first argument passed on the
+          commandline is <code>$1</code> the next <code>$2</code> and
+          so on.  (<code>$0</code> is the name of the program itself.)
+        </p>
+
+        <p>
+          Arguments are separated by whitespace.  If we want to pass a
+          string with spaces as a single argument we need to quote it.
+        </p>
+
+        <p>
+          Using this we can customize our script.  Though we need one
+          more thing before we're there.
+        </p>
+      </section>
+      <section id="interpolation">
+        <h2>String Interpolation</h2>
+
+        <p>
+          Like many different languages shell has string
+          interpolation.
+        </p>
+
+        <p>
+          In shell a single quoted string won't perform interpolation
+          while a double quoted string will.
+        </p>
+
+        <pre>
+<span class="comment">#!/bin/zsh</span>
+
+<span class="builtin">echo</span> <span class="string">"$1 goes: $2"</span>
+
+<span class="sh">dog Lassie 'little Timmy is stuck in a well!'</span>
+<span class="output">Lassie goes: little Timmy is stuck in a well!</span>
+        </pre>
+      </section>
+
+      <section id="if">
+        <h2>if</h2>
+
+        <p>
+          Like in most other languages we've got if available to us in
+          shell.  The syntax is a little funky though.
+        </p>
+
+        <pre>
+<span class="keyword">if</span> [ <span class="var">$CONDITION</span> ]; <span class="keyword">then</span>
+<span class="comment">    # do something.</span>
+<span class="keyword">else</span>
+<span class="comment">    # do something else.</span>  
+<span class="keyword">fi</span></pre>
+
+        <p>
+          Notice the <code>; <span class="keyword">then</span></code>
+          on the first line and that the block ends with a <code><span class="keyword">fi</span></code>.  Both of these are required.
+        </p>
+      </section>
+
+      <section id="conditions">
+        <h2>Conditions</h2>
+
+        <p>
+          Conditions for <code>if</code> blocks are a little weird.
+          It turns out that "[" is actually a command itself.  If you
+          pass it a variable it will act as false if the variable is
+          empty.
+        </p>
+
+        <pre>
+[ <span class="string">"$1"</span> ] <span class="comment"># $1 isn't the empty string</span>
+[ ! <span class="string">"$1"</span> ] <span class="comment"># $1 is the empty string</span>
+[ <span class="string">"$1"</span> = <span class="string">"$2"</span> ] <span class="comment"># $1 and $2 contain same chars</span>
+[ <span class="string">"$1"</span> != <span class="string">"$2"</span> ] <span class="comment"># $1 and $2 don't contain same chars</span>
+[ -f <span class="string">"$1"</span> ] <span class="comment"># $1 is a valid path to a regular file</span>
+[ -d <span class="string">"$1"</span> ] <span class="comment"># $1 is a valid path to a directory</span>
+[ <span class="string">"$1"</span> -eq <span class="string">"$2"</span> ] <span class="comment"># $1 and $2 are numerically equal</span>
+[ <span class="string">"$1"</span> -lt <span class="string">"$2"</span> ] <span class="comment"># $1 is less than $2</span>
+[ <span class="string">"$1"</span> -ge <span class="string">"$2"</span> ] <span class="comment"># $1 is greater or equal to $2</span>
+        </pre>
+      </section>
+
+      <section id="variables">
+        <h2>Variables</h2>
+
+        <p>
+          Variables in shell are defined in all uppercase by convention.
+        </p>
+
+        <p>
+          You've probably already used a few shell variables to
+          configure your environment.  The <code>PATH</code> we set
+          earlier is just a shell variable.
+        </p>
+
+        <p>
+          To define (or modify) a variable use the variable name and
+          an <code>=</code> with <em>no space</em> between them.
+        </p>
+        
+        <pre>
+<span class="var">NAME</span>=<span class="string">'Lassie'</span>
+<span class="var">AGE</span>=<span class="string">4</span> <span class="comment"># Note, this is still a string.  
+        </pre>
+      </section>
+      <section id="bringing-it-all-together">
+        <h2>Bringing it all together</h2>
+
+                <pre>
+<span class="comment">#!/bin/zsh</span>
+<span class="keyword">if</span> [ <span class="string">"$1"</span> ]; <span class="keyword">then</span>
+    <span class="var">NAME</span>=<span class="string">"$1"</span>
+<span class="keyword">else</span>
+    <span class="var">NAME</span>=<span class="string">'The dog'</span>
+<span class="keyword">fi</span>
+
+<span class="keyword">if</span> [ <span class="string">"$2"</span> ]; <span class="keyword">then</span>
+    <span class="var">NAME</span>=<span class="string">"$2"</span>
+<span class="keyword">else</span>
+    <span class="var">NAME</span>=<span class="string">'Bark'</span>
+<span class="keyword">fi</span>
+    
+<span class="builtin">echo</span> <span class="string">"$1 goes: $2"</span>
+      </section>
+
+      <section id="bringing-it-all-together-output">
+        <h2>Bringing it all Together (output)</h2>
+        <pre>
+<span class="sh">dog Lassie 'little Timmy is stuck in a well!'</span>
+<span class="output">Lassie goes: little Timmy is stuck in a well!</span>
+
+<span class="sh">dog Lassie</span>
+<span class="output">Lassie goes: Bark</span>
+
+<span class="sh">dog</span>
+<span class="output">The dog goes: Bark</span>
+        </pre>
       </section>
     </main>
   </body>

@@ -1,0 +1,27 @@
+.comment {
+  color: #d71e00dd;
+}
+
+.builtin, .keyword {
+  color: #bc93b6;
+}
+
+.keyword {
+  font-weight: bold;
+}
+
+.string {
+  color: #417ab3;
+}
+
+.var {
+  color: #c17c10;
+}
+
+.def {
+  color: #009d94;
+}
+
+.output {
+  font-weight: bold;
+}
