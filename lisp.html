@@ -7,6 +7,7 @@
 
     <link href="./assets/style.css" rel="stylesheet" />
     <link href="./assets/lisp.css" rel="stylesheet" />
+    <link href="./assets/code.css" rel="stylesheet" />
 
     <script src="./assets/ui.js"></script>
     <link href="./assets/ui.css" rel="stylesheet" />
@@ -20,37 +21,190 @@
         <h1>Lisp</h1>
       </section>
 
-      <section id="first-topic">
-        <h2>Title of the First Topic</h2>
+      <section id="what-is-lisp">
+        <h2>What is Lisp?</h2>
 
-        <blockquote>
-          Descriptive quote if it applies?
-        </blockquote>
+        <p>
+          Lisp (short for "list processing") is actually a family of
+          programming languages and not a single programming language.
+          The first version of Lisp is from 1958.
+        </p>
 
-        <section class="compare">
-          <h3>Positives</h3>
-          <ul>
-            <li>Some</li>
-            <li>Good</li>
-            <li>Stuff</li>
-          </ul>
+        <p>
+          Lisp is notable for its early use of:
+        </p>
 
-          <h3>Negatives</h3>
-          <ul>
-            <li>Some</li>
-            <li>Bad</li>
-            <li>Stuff</li>
-          </ul>
-        </section>
+        <ul>
+          <li>Garbage collection</li>
+          <li>Linked lists</li>
+          <li>First class and higher order functions</li>
+          <li>Macros</li>
+        </ul>
+      </section>
+
+      <section id="dialects">
+        <h2>Dialects</h2>
+
+        <p>
+          Specific languages in the Lisp family are usually called
+          "dialects".
+        </p>
+
+        <p>
+          Notable dialects are:
+        </p>
+
+        <ul>
+          <li>Common Lisp</li>
+          <li>Clojure</li>
+          <li>Scheme</li>
+          <li>Racket (an offshoot of Scheme)</li>
+          <li>Emacs Lisp</li>
+        </ul>
+      </section>
+
+      <section id="racket">
+        <h2>Racket</h2>
+
+        <p>
+          Racket is a teaching focused offshoot of Scheme, the
+          examples in this presentation will be written in Racket but
+          the concepts are broadly applicable.
+        </p>
+        
+        <p>
+          Aside from the syntax Racket should be a fairly familiar
+          language to you.  It's dynamically typed and uses functions
+          as first class objects.
+        </p>
+
+        <p>
+          Where it will feel different is that Racket (as with most
+          Lisps) doesn't have iterative constructs but instead relies
+          on recursion.
+        </p>
+      </section>
+
+      <section id="lists">
+        <h2>Lists</h2>
+
+        <p>
+          The basic building block of Lisp programs is the List.
+        </p>
+
+        <p>
+          The thing about Lisp code is that it's actually a
+          datastructure.  Any Lisp program is a series of lists that
+          are executed.
+        </p>
+
+        <p>
+          A typical function call looks like: <code>(function-name arg0 arg1)</code>
+        </p>
+
+        <p>
+          One way to represent something as data is to use
+          the <code>list</code> function:
+        </p>
+
+        <pre>
+<span class="paren">(</span>list <span class="string">"dog" "cat" "rabbit"</span><span class="paren">)</span>
+        </pre>
+      </section>
+
+      <section id="syntax">
+        <h2>Syntax</h2>
+
+        <p>
+          The biggest adjustment when learning to write/read Lisp is
+          the syntax itself, or more the <em>lack</em> of
+          syntax/abundance of parenthesis.
+        </p>
+        
+        <p>
+          Here is a pretty standard greeting program:
+        </p>
+<pre>          
+<span class="paren">(</span><span class="keyword">define</span> <span class="paren">(</span><span class="def">greet</span> name<span class="paren">)</span>
+  <span class="paren">(</span><span class="builtin">displayln</span> <span class="paren">(</span><span class="builtin">string-append</span> <span class="string">"Hello, "</span> name<span class="paren"> <span class="string">"!"</span>)))</span>
+
+<span class="paren">(</span>greet <span class="string">"Ada"</span><span class="paren">)</span> <span class="comment">; Prints "Hello, Ada"</span>
+</pre>
+      </section>
+
+      <section id="structure">
+        <h2>Structure</h2>
+
+        <p>
+          Because Lisp is highly structured it's easy to reason about
+          as a syntax tree.  
+        </p>
+
+        <p>
+          In many ways this makes it resemble a markup language.
+        </p>
+<pre>        
+<span class="paren">(</span>html
+  <span class="paren">(</span>head
+    <span class="paren">(</span>title <span class="string">"Lisp"</span><span class="paren">))</span>
+  <span class="paren">(</span>body
+    <span class="paren">(</span>section
+      <span class="paren">(</span>h1 <span class="string">"Lisp"</span><span class="paren">))))</span>
+</pre>
+      </section>
+
+      <section id="macros">
+        <h2>Macros</h2>
+
+        <p>
+          Because Lisp is so datastructure oriented it's historically
+          been much easier to write macros in it than other languges.
+        </p>
+
+        <p>
+          Macros are basically functions that get to
+          control <em>when</em> they evaluate their arguments.
+        </p>
+
+        <p>
+          For example, in a language that has macros it's common for
+          something like <code>if</code> to be implemented as a macro
+          that generates a <code>switch</code> statement.
+        </p>
       </section>
 
       <section id="resources">
         <h2>Resources</h2>
+
         <ul>
-          <li>A relevant link</li>
-          <li>Another relevant link!</li>
+          <li>
+            <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">
+              Wikipedia: Lisp (programming language)
+            </a>
+          </li>
+          <li>
+            <a href="https://racket-lang.org/">
+              The Official Racket Website
+            </a>
+          </li>
+          <li>
+            <a href="https://docs.racket-lang.org/guide/macros.html">
+              Macros (Racket documentation)
+            </a>
+          </li>
+          <li>
+            <a href="https://clojure.org/">
+              The Official Clojure Website
+            </a>
+          </li>
+          <li>
+            <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/">
+              Emacs Lisp (Emacs Documentation)
+            </a>
+          </li>
         </ul>
       </section>
+        
     </main>
   </body>
 </html>
