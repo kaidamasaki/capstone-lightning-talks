@@ -1,0 +1,16 @@
+body {
+  color: #F5F3BB;
+  background: #690500;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #ec6;
+}
+
+pre {
+  font-size: 0.65em;
+}
+
+#slideshow blockquote {
+  margin-top: 1.5em;
+}

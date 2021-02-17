@@ -7,6 +7,7 @@
 
     <link href="./assets/style.css" rel="stylesheet" />
     <link href="./assets/progressive-enhancement.css" rel="stylesheet" />
+    <link href="./assets/code.css" rel="stylesheet" />
 
     <script src="./assets/ui.js"></script>
     <link href="./assets/ui.css" rel="stylesheet" />
@@ -20,36 +21,111 @@
         <h1>Progressive Enhancement</h1>
       </section>
 
-      <section id="first-topic">
-        <h2>Title of the First Topic</h2>
+      <section id="what-is-it">
+        <h2>What is it?</h2>
 
-        <blockquote>
-          Descriptive quote if it applies?
-        </blockquote>
+        <p>
+          Basically Progressive Enhancement is a set of principles:
+        </p>
 
-        <section class="compare">
-          <h3>Positives</h3>
-          <ul>
-            <li>Some</li>
-            <li>Good</li>
-            <li>Stuff</li>
-          </ul>
-
-          <h3>Negatives</h3>
-          <ul>
-            <li>Some</li>
-            <li>Bad</li>
-            <li>Stuff</li>
-          </ul>
-        </section>
+        <ol>
+          <li>Your HTML should be semantically meaningful</li>
+          <li>Your HTML should be independent of your CSS</li>
+          <li>Your CSS should include no new information</li>
+          <li>Your JavaScript should only add <em>extra</em> functionality</li>
+        </ol>
       </section>
 
-      <section id="resources">
-        <h2>Resources</h2>
-        <ul>
-          <li>A relevant link</li>
-          <li>Another relevant link!</li>
-        </ul>
+      <section id="semantic">
+        <h2>Semantic HTML</h2>
+
+        <blockquote>
+          Your HTML should be semantically meaningful
+        </blockquote>
+
+        <pre>
+&lt;<span class="def">section</span> <span class="var">id</span>=<span class="string">"what-is-it"</span>&gt;
+  &lt;<span class="def">h2</span>&gt;What is it?&lt;/<span class="def">h2</span>&gt;
+
+  &lt;<span class="def">p</span>&gt;
+    Basically Progressive Enhancement is a set of principles:
+  &lt;/<span class="def">p</span>&gt;
+
+  &lt;<span class="def">ol</span>&gt;
+    &lt;<span class="def">li</span>&gt;Your HTML should be semantically meaningful&lt;/<span class="def">li</span>&gt;
+    &lt;<span class="def">li</span>&gt;Your HTML should be independent of your CSS&lt;/<span class="def">li</span>&gt;
+    &lt;<span class="def">li</span>&gt;Your CSS should include no new information&lt;<span class="def">li</span>&gt;
+    &lt;<span class="def">li</span>&gt;Your JavaScript should only add &lt;em&gt;extra&lt;/em&gt; functionality&lt;/<span class="def">li</span>&gt;
+  &lt;/<span class="def">ol</span>&gt;
+&lt;/<span class="def">section</span>&gt;          
+        </pre>
+      </section>
+
+      <section id="independent-css">
+        <h2>Independent CSS</h2>
+
+        <blockquote>
+          Your HTML should be independent of your CSS
+        </blockquote>
+
+        <p>
+          This is the principle that you not modify the
+          <em>structure</em> of your HTML to accommodate your styling.
+        </p>
+
+        <p>
+          Adding <em>classes</em> and <em>identifiers</em> is alright
+          but ideally you wouldn't add any new elements to your code
+          unless they convey meaning on their own.
+        </p>
+      </section>
+
+      <section id="no-new-info-in-css">
+        <h2>No New Information in CSS</h2>
+
+        <blockquote>
+          Your CSS should include no new information
+        </blockquote>
+
+        <p>
+          You should have no information in your document that is
+          conveyed <em>only</em> in CSS.
+        </p>
+
+        <p>
+          It's okay to do something like add color coding to a
+          document but document should communicate the same
+          information without it.
+        </p>
+
+        <p>
+          This is largely for accessibility (screen readers don't
+          understand color coding).
+        </p>
+      </section>
+
+      <section id="javascript">
+        <h2>JavaScript</h2>
+
+        <blockquote>
+          Your JavaScript should only add extra functionality
+        </blockquote>
+
+        <p>
+          This is the biggest difference between a web<em>site</em>
+          and a web<em>app</em>.
+        </p>
+
+        <p>
+          Progressive Enhancement only really applies to websites.  If
+          you're building something that is interactive by nature then
+          JavaScript will be critical.
+        </p>
+
+        <p>
+          If you're primarily presenting information though you should
+          do your best to make it accessible without JavaScript.
+        </p>
       </section>
     </main>
   </body>
